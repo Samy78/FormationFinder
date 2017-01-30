@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by Samy on 26/01/2017.
  */
@@ -83,5 +85,22 @@ public class FormateurController {
             // return "Error creating the user: " + ex.toString();
         }
         return "Formateur modifié id(" + idformateur+ ")";
+    }
+
+    @RequestMapping(value="/getallFormateur", method = RequestMethod.GET,headers="Accept=application/json")
+    @ResponseBody
+    public Iterable<Formateur> fetchall() {
+
+        // Long idformateur=null;
+        Iterable<Formateur> formateurs =null;
+        try {
+            formateurs = FormateurDAO.findAll();
+
+        }
+        catch (Exception ex) {
+            // return "Error creating the user: " + ex.toString();
+
+        }
+        return formateurs;
     }
 }
