@@ -5,19 +5,21 @@ import com.formationfinder.insat.models.FormateurDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Samy on 26/01/2017.
  */
-@Controller
+@RestController
 public class FormateurController {
     @Autowired
     private FormateurDAO FormateurDAO;
 
-    @RequestMapping("/createFormateur")
+    @RequestMapping(value="/createFormateur", method = RequestMethod.GET,headers="Accept=application/json")
     @ResponseBody
-    public String create(Long idformateur,
+    public Formateur create(Long idformateur,
             String nom,
             String prenom,
             String dateNaissance,
@@ -32,12 +34,12 @@ public class FormateurController {
         Formateur f = null;
        // Long idformateur=null;
         try {
-            f = new Formateur(idformateur,nom,prenom,dateNaissance,email,telephone,specialite,note,dossier,motDePasse,active,cin);
+            f = new Formateur(nom,prenom,dateNaissance,email,telephone,specialite,note,dossier,motDePasse,active,cin);
             FormateurDAO.save(f);
         }
         catch (Exception ex) {
-            return "Error creating the user: " + ex.toString();
+           // return "Error creating the user: " + ex.toString();
         }
-        return "Formateur succesfully created! (id = " + f.getCin() + ")";
+        return f;
     }
 }

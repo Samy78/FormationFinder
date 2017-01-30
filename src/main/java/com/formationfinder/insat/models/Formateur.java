@@ -6,9 +6,9 @@ import javax.persistence.*;
  * Created by Samy on 19/01/2017.
  */
 @Entity
+@Table(name="formateur")
 public class Formateur {
     @Id
-   // @GeneratedValue(strategy=GenerationType.AUTO)
     private Long idformateur;
 
     private String nom;
@@ -25,8 +25,8 @@ public class Formateur {
 
     public Formateur(){}
 
-    public Formateur(Long idformateur,String nom, String prenom, String dateNaissance, String email, String telephone, String specialite, String note, String dossier, String motDePasse, Integer active, String cin) {
-        this.idformateur=idformateur;
+    public Formateur(String nom, String prenom, String dateNaissance, String email, String telephone, String specialite, String note, String dossier, String motDePasse, Integer active, String cin) {
+        //this.idformateur=idformateur;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -41,6 +41,7 @@ public class Formateur {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idformateur")
     public Long getIdformateur() {
         return idformateur;
