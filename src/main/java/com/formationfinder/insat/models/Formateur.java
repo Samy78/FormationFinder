@@ -39,9 +39,24 @@ public class Formateur {
         this.active = active;
         this.cin = cin;
     }
+    public Formateur(Long idformateur,String nom, String prenom, String dateNaissance, String email, String telephone, String specialite, String note, String dossier, String motDePasse, Integer active, String cin) {
+        this.idformateur=idformateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.email = email;
+        this.telephone = telephone;
+        this.specialite = specialite;
+        this.note = note;
+        this.dossier = dossier;
+        this.motDePasse = motDePasse;
+        this.active = active;
+        this.cin = cin;
+    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "idformateur")
     public Long getIdformateur() {
         return idformateur;

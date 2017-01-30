@@ -19,7 +19,7 @@ public class FormateurController {
 
     @RequestMapping(value="/createFormateur", method = RequestMethod.GET,headers="Accept=application/json")
     @ResponseBody
-    public Formateur create(Long idformateur,
+    public Formateur create(
             String nom,
             String prenom,
             String dateNaissance,
@@ -41,5 +41,47 @@ public class FormateurController {
            // return "Error creating the user: " + ex.toString();
         }
         return f;
+    }
+
+    @RequestMapping(value="/deleteFormateur", method = RequestMethod.GET,headers="Accept=application/json")
+    @ResponseBody
+    public String del(Long idformateur) {
+        Formateur f = null;
+        // Long idformateur=null;
+        try {
+            f = new Formateur();
+            f=FormateurDAO.findOne(idformateur);
+            FormateurDAO.delete(f);
+        }
+        catch (Exception ex) {
+            // return "Error creating the user: " + ex.toString();
+        }
+        return "Formateur supprimé id(" + idformateur+ ")";
+    }
+
+    @RequestMapping(value="/updateFormateur", method = RequestMethod.GET,headers="Accept=application/json")
+    @ResponseBody
+    public String update(Long idformateur,String nom,
+                         String prenom,
+                         String dateNaissance,
+                         String email,
+                         String telephone,
+                         String specialite,
+                         String note,
+                         String dossier,
+                         String motDePasse,
+                         Integer active,
+                         String cin) {
+        Formateur f = null;
+        // Long idformateur=null;
+        try {
+            f = new Formateur(idformateur,nom,prenom,dateNaissance,email,telephone,specialite,note,dossier,motDePasse,active,cin);
+
+            FormateurDAO.save(f);
+        }
+        catch (Exception ex) {
+            // return "Error creating the user: " + ex.toString();
+        }
+        return "Formateur modifié id(" + idformateur+ ")";
     }
 }
