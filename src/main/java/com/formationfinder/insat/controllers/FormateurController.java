@@ -103,4 +103,26 @@ public class FormateurController {
         }
         return formateurs;
     }
+
+    @RequestMapping(value="/AuthentificationFormateur", method = RequestMethod.GET,headers="Accept=application/json")
+    @ResponseBody
+    public boolean authentification(String email, String motDepasse) {
+        Formateur f = null;
+
+        boolean bool=false;
+        try {
+
+            f=FormateurDAO.findFormateurByEmail(email);
+            if( f.getMotDePasse()==motDepasse)
+            {bool=true;}
+            else
+            {bool=false;}
+
+        }
+        catch (Exception ex) {
+            // return "Error creating the user: " + ex.toString();
+        }
+        return bool;
+    }
+
 }

@@ -10,4 +10,6 @@ import javax.transaction.Transactional;
 @Transactional
 public interface FormateurDAO extends CrudRepository<Formateur,Long>{
 
+   public Formateur findFormateurByEmail(String email);
+
 }
