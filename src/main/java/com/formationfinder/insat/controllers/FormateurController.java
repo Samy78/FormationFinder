@@ -102,7 +102,7 @@ public class FormateurController {
         return formateurs;
     }
 
-    @RequestMapping(value="/AuthentificationFormateur", method = RequestMethod.GET,headers="Accept=application/json")
+    @RequestMapping(value="/AuthentificationFormateur", method = RequestMethod.POST,headers="Accept=application/json")
     @ResponseBody
     public Formateur authentification(String email, String motDepasse) {
         Formateur f;
