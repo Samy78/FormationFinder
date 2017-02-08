@@ -3,7 +3,7 @@ package com.formationfinder.insat.controllers;
 import com.formationfinder.insat.models.Formateur;
 import com.formationfinder.insat.models.FormateurDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,7 +34,6 @@ public class FormateurController {
             Integer active,
             String cin) {
         Formateur f = null;
-       // Long idformateur=null;
         try {
             f = new Formateur(nom,prenom,dateNaissance,email,telephone,specialite,note,dossier,motDePasse,active,cin);
             FormateurDAO.save(f);
@@ -75,7 +74,6 @@ public class FormateurController {
                          Integer active,
                          String cin) {
         Formateur f = null;
-        // Long idformateur=null;
         try {
             f = new Formateur(idformateur,nom,prenom,dateNaissance,email,telephone,specialite,note,dossier,motDePasse,active,cin);
 
@@ -107,13 +105,12 @@ public class FormateurController {
     @RequestMapping(value="/AuthentificationFormateur", method = RequestMethod.GET,headers="Accept=application/json")
     @ResponseBody
     public boolean authentification(String email, String motDepasse) {
-        Formateur f = null;
+        Formateur f;
 
         boolean bool=false;
         try {
-
-            f=FormateurDAO.findFormateurByEmail(email);
-            if( f.getMotDePasse()==motDepasse)
+            f = FormateurDAO.findByemail(email);
+            if( f.getMotDePasse().equals(motDepasse))
             {bool=true;}
             else
             {bool=false;}
