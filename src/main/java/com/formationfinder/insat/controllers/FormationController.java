@@ -28,7 +28,8 @@ public class FormationController {
             String prix,
             String qrcode,
             String coef,
-            int idformateur,int idlieu) {
+            int idformateur,
+            int idlieu) {
         Formation f = null;
         try {
             f = new Formation(nom,domaine,lieu,date,prix,qrcode,coef,idformateur,idlieu);
@@ -65,7 +66,8 @@ public class FormationController {
                          String prix,
                          String qrcode,
                          String coef,
-                         int idformateur,int idlieu) {
+                         int idformateur,
+                         int idlieu) {
         Formation f = null;
         try {
             f = new Formation(idformation,nom,domaine,lieu,date,prix,qrcode,coef,idformateur,idlieu);

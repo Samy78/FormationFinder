@@ -140,8 +140,9 @@ public class Formation {
     public void setIdformateur(int idformateur) {
         this.idformateur = idformateur;
     }
+
     @Basic
-    @Column(name = "Lieu_idLieu")
+    @Column(name = "lieu_idlieu")
     public int getIdlieu() {
         return idlieu;
     }
