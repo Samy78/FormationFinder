@@ -23,6 +23,7 @@ public class Formateur {
     private Integer active;
     private String cin;
 
+
     public Formateur(){}
 
     public Formateur(String nom, String prenom, String dateNaissance, String email, String telephone, String specialite, String note, String dossier, String motDePasse, Integer active, String cin) {
@@ -175,6 +176,8 @@ public class Formateur {
     public void setCin(String cin) {
         this.cin = cin;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

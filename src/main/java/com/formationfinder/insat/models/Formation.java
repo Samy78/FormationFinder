@@ -17,6 +17,36 @@ public class Formation {
     private String prix;
     private String qrcode;
     private String coef;
+    private int idformateur;
+    private int idlieu;
+
+    public Formation(int idformation, String nom, String domaine, String lieu, String date, String prix, String qrcode, String coef, int idformateur, int idlieu) {
+        this.idformation = idformation;
+        this.nom = nom;
+        this.domaine = domaine;
+        this.lieu = lieu;
+        this.date = date;
+        this.prix = prix;
+        this.qrcode = qrcode;
+        this.coef = coef;
+        this.idformateur = idformateur;
+        this.idlieu = idlieu;
+    }
+
+    public Formation(String nom, String domaine, String lieu, String date, String prix, String qrcode, String coef, int idformateur, int idlieu) {
+        this.nom = nom;
+        this.domaine = domaine;
+        this.lieu = lieu;
+        this.date = date;
+        this.prix = prix;
+        this.qrcode = qrcode;
+        this.coef = coef;
+        this.idformateur = idformateur;
+        this.idlieu = idlieu;
+    }
+
+    public Formation() {
+    }
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,6 +129,25 @@ public class Formation {
 
     public void setCoef(String coef) {
         this.coef = coef;
+    }
+
+    @Basic
+    @Column(name = "formateur_idformateur")
+    public int getIdformateur() {
+        return idformateur;
+    }
+
+    public void setIdformateur(int idformateur) {
+        this.idformateur = idformateur;
+    }
+    @Basic
+    @Column(name = "Lieu_idLieu")
+    public int getIdlieu() {
+        return idlieu;
+    }
+
+    public void setIdlieu(int idlieu) {
+        this.idlieu = idlieu;
     }
 
     @Override
