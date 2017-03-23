@@ -6,4 +6,6 @@ import org.springframework.data.repository.CrudRepository;
  * Created by Samy on 09/02/2017.
  */
 public interface FormationDAO extends CrudRepository<Formation, Long> {
+
+    Iterable<Formation> findByIdformateur(int idformateur);
 }

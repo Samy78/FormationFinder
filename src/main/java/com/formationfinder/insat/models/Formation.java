@@ -18,7 +18,7 @@ public class Formation {
     private String qrcode;
     private String coef;
     private int idformateur;
-    private int idlieu;
+    private int id_lieu;
 
     public Formation(int idformation, String nom, String domaine, String lieu, String date, String prix, String qrcode, String coef, int idformateur, int idlieu) {
         this.idformation = idformation;
@@ -30,7 +30,7 @@ public class Formation {
         this.qrcode = qrcode;
         this.coef = coef;
         this.idformateur = idformateur;
-        this.idlieu = idlieu;
+        this.id_lieu = idlieu;
     }
 
     public Formation(String nom, String domaine, String lieu, String date, String prix, String qrcode, String coef, int idformateur, int idlieu) {
@@ -42,7 +42,7 @@ public class Formation {
         this.qrcode = qrcode;
         this.coef = coef;
         this.idformateur = idformateur;
-        this.idlieu = idlieu;
+        this.id_lieu = idlieu;
     }
 
     public Formation() {
@@ -142,13 +142,13 @@ public class Formation {
     }
 
     @Basic
-    @Column(name = "lieu_idlieu")
+    @Column(name = "lieu_id_lieu")
     public int getIdlieu() {
-        return idlieu;
+        return id_lieu;
     }
 
     public void setIdlieu(int idlieu) {
-        this.idlieu = idlieu;
+        this.id_lieu = idlieu;
     }
 
     @Override

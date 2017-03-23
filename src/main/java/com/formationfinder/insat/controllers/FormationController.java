@@ -18,7 +18,7 @@ public class FormationController {
     @Autowired
     private FormationDAO formationDAO;
 
-    @RequestMapping(value="/createFormation", method = RequestMethod.GET,headers="Accept=application/json")
+    @RequestMapping(value="/createFormation", method = RequestMethod.POST,headers="Accept=application/json")
     @ResponseBody
     public Formation create(
             String nom,
@@ -95,5 +95,21 @@ public class FormationController {
 
         }
         return formateurs;
+    }
+    @RequestMapping(value="/getFormation", method = RequestMethod.GET,headers="Accept=application/json")
+    @ResponseBody
+    public Iterable<Formation> findByformateur(int idformateur) {
+
+        // Long idformateur=null;
+        Iterable<Formation> formations =null;
+        try {
+            formations = formationDAO.findByIdformateur(idformateur);
+
+        }
+        catch (Exception ex) {
+            // return "Error creating the user: " + ex.toString();
+
+        }
+        return formations;
     }
 }
